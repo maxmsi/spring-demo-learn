@@ -8,12 +8,21 @@
         
         	<bean id="myCoach"
 				class="maxmsi.springdemo.BassebalCoach">
+				
+				<!-- set up the constrctor injection -->
+				<constructor-arg ref="myFortune" />
 			</bean>
 			
 			<bean id="myTrackCoach"
 				class="maxmsi.springdemo.TrackCoach">
+				<!-- set up the constrctor injection -->
+				<constructor-arg ref="myFortune" />
 			</bean>
 			
+			<bean id="myFortune"
+				class="maxmsi.springdemo.HappyFortuneService"
+				>
+			</bean>
 
 </beans>
 
