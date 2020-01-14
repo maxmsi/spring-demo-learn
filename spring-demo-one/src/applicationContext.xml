@@ -31,7 +31,13 @@
 				class="maxmsi.springdemo.CricketCoach">
 				
 				<!-- set up setter injection -->
+				
 				<property name="fortuneService" ref="myFortune"/>
+				
+				<!-- inject literal values  -->
+				
+				<property name="team" value="Mealwoki Bucks" />
+				<property name="emailaddress" value="xdpodx@o2.pl" />
 			</bean>
 			
 
