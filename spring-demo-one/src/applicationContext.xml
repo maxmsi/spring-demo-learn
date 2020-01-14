@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"> <!-- bean definitions here -->
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:property-placeholder location="classpath:sport.properties" />
+    <context:component-scan base-package="com.spring.hibernate" />
+
+    <tx:annotation-driven transaction-manager="hibernateTransactionManager" />
+
         
         
+        <!--  Define your bens here -->
         	<bean id="myCoach"
 				class="maxmsi.springdemo.BassebalCoach">
 				
@@ -23,7 +31,7 @@
 			
 			
 			<bean id="myFortune"
-				class="maxmsi.springdemo.HappyFortuneService">
+				class="maxmsi.springdemo.FortuneService">
 			</bean>
 			
 			
@@ -34,10 +42,12 @@
 				
 				<property name="fortuneService" ref="myFortune"/>
 				
-				<!-- inject literal values  -->
+				<!-- inject values from property file  -->
 				
-				<property name="team" value="Mealwoki Bucks" />
-				<property name="emailaddress" value="xdpodx@o2.pl" />
+				<property name="team" value="${foo.email}" />
+				<property name="emailaddress" value="${foo.team}" />
+				
+				
 			</bean>
 			
 
